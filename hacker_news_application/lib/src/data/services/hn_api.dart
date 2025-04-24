@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../models/item.dart';
-import '../models/user.dart'; // ← import your User model
+import '../models/user.dart';
 
-part 'hn_api.g.dart'; // ← tell build_runner where to put generated code
+part 'hn_api.g.dart';
 
 @RestApi(baseUrl: 'https://hacker-news.firebaseio.com/v0/')
 abstract class HnApi {

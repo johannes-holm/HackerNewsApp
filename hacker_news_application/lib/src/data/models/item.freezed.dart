@@ -21,12 +21,13 @@ Item _$ItemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Item {
   int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'by')
   String get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'time')
   int get timestamp => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,10 +41,11 @@ abstract class $ItemCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String title,
+      String? title,
       @JsonKey(name: 'by') String author,
       @JsonKey(name: 'time') int timestamp,
-      String? url});
+      String? url,
+      String? type});
 }
 
 /// @nodoc
@@ -60,20 +62,21 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? title = freezed,
     Object? author = null,
     Object? timestamp = null,
     Object? url = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
@@ -85,6 +88,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -99,10 +106,11 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String title,
+      String? title,
       @JsonKey(name: 'by') String author,
       @JsonKey(name: 'time') int timestamp,
-      String? url});
+      String? url,
+      String? type});
 }
 
 /// @nodoc
@@ -116,20 +124,21 @@ class __$$ItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
+    Object? title = freezed,
     Object? author = null,
     Object? timestamp = null,
     Object? url = freezed,
+    Object? type = freezed,
   }) {
     return _then(_$ItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: null == title
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
@@ -142,6 +151,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -151,10 +164,11 @@ class __$$ItemImplCopyWithImpl<$Res>
 class _$ItemImpl implements _Item {
   const _$ItemImpl(
       {required this.id,
-      required this.title,
+      this.title,
       @JsonKey(name: 'by') required this.author,
       @JsonKey(name: 'time') required this.timestamp,
-      this.url});
+      this.url,
+      this.type});
 
   factory _$ItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$ItemImplFromJson(json);
@@ -162,7 +176,7 @@ class _$ItemImpl implements _Item {
   @override
   final int id;
   @override
-  final String title;
+  final String? title;
   @override
   @JsonKey(name: 'by')
   final String author;
@@ -171,10 +185,12 @@ class _$ItemImpl implements _Item {
   final int timestamp;
   @override
   final String? url;
+  @override
+  final String? type;
 
   @override
   String toString() {
-    return 'Item(id: $id, title: $title, author: $author, timestamp: $timestamp, url: $url)';
+    return 'Item(id: $id, title: $title, author: $author, timestamp: $timestamp, url: $url, type: $type)';
   }
 
   @override
@@ -187,13 +203,14 @@ class _$ItemImpl implements _Item {
             (identical(other.author, author) || other.author == author) &&
             (identical(other.timestamp, timestamp) ||
                 other.timestamp == timestamp) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, title, author, timestamp, url);
+      Object.hash(runtimeType, id, title, author, timestamp, url, type);
 
   @JsonKey(ignore: true)
   @override
@@ -212,17 +229,18 @@ class _$ItemImpl implements _Item {
 abstract class _Item implements Item {
   const factory _Item(
       {required final int id,
-      required final String title,
+      final String? title,
       @JsonKey(name: 'by') required final String author,
       @JsonKey(name: 'time') required final int timestamp,
-      final String? url}) = _$ItemImpl;
+      final String? url,
+      final String? type}) = _$ItemImpl;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
 
   @override
   int get id;
   @override
-  String get title;
+  String? get title;
   @override
   @JsonKey(name: 'by')
   String get author;
@@ -231,6 +249,8 @@ abstract class _Item implements Item {
   int get timestamp;
   @override
   String? get url;
+  @override
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
